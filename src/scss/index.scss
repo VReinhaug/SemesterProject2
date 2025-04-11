@@ -1,7 +1,7 @@
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
 body {
   background-color: map-get($colours, primary);
   color: map-get($colours, text);
 }
-
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-@import "variables";
