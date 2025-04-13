@@ -17,30 +17,37 @@
   </head>
   <body>
     <header>
-      <nav>
-        <div>
-          <a href="#">
-            <img src="/img/GB-logo_180x180.png" alt="logo" />
+      <nav
+        class="navbar d-flex justify-content-between align-items-center p-4 mb-4"
+      >
+        <a class="navbar-brand" href="#">
+          <img
+            src="/img/GB-logo_180x180.png"
+            alt="logo"
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="nav-icons d-flex gap-4">
+          <a
+            href="/new-listing.html"
+            class="nav-icon text-center text-decoration-none"
+          >
+            <i class="fa-solid fa-square-plus fa-xl"></i>
+            <p class="mb-0">New Listing</p>
+          </a>
+          <a href="#" class="nav-icon text-center text-decoration-none">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+            <p class="mb-0">Logout</p>
+          </a>
+          <a
+            href="/profile.html"
+            class="nav-icon text-center text-decoration-none"
+          >
+            <i class="fa-solid fa-circle-user fa-xl"></i>
+            <p class="mb-0">Profile</p>
           </a>
         </div>
-        <section>
-          <div>
-            <a href="/new-listing.html">
-              <i class="fa-solid fa-square-plus"></i>
-              <p>New Listing</p>
-            </a>
-          </div>
-          <div>
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <p>Logout</p>
-          </div>
-          <div>
-            <a href="/profile.html">
-              <i class="fa-solid fa-circle-user"></i>
-              <p>Profile</p>
-            </a>
-          </div>
-        </section>
       </nav>
     </header>
     <h1>GoodBid</h1>
