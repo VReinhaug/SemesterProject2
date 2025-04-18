@@ -9,6 +9,16 @@
       name="description"
       content="Login or create new user to be able to create your own listings or bid on products"
     />
+    <link rel="stylesheet" href="dist/css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/84a2433f18.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -31,13 +41,13 @@
             <i class="fa-solid fa-square-plus fa-xl"></i>
             <p class="mb-0">New Listing</p>
           </a>
-          <a href="#" class="nav-icon text-center text-decoration-none">
+          <a href="#" class="nav-icon logout text-center text-decoration-none">
             <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
             <p class="mb-0">Logout</p>
           </a>
           <a
             href="/profile.html"
-            class="nav-icon text-center text-decoration-none"
+            class="nav-icon profile text-center text-decoration-none"
           >
             <i class="fa-solid fa-circle-user fa-xl"></i>
             <p class="mb-0">Profile</p>
@@ -45,6 +55,32 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div id="login-message" class="mb-3"></div>
+      <div class="row col-10 col-md-5 m-auto card p-3">
+        <form name="auth">
+          <h2 id="authTitle" class="text-center">Login</h2>
+          <div id="nameField" style="display: none" class="mb-3">
+            <input type="text" name="name" placeholder="Name" />
+          </div>
+          <div class="mb-3">
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="mb-3">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button type="submit" data-auth="login" class="btn btn-primary">
+            Log in
+          </button>
+        </form>
+        <a href="#" id="toggleAuthMode">Don't have an account? Register here</a>
+      </div>
+    </main>
+    <script type="module" src="js/main.mjs"></script>
   </body>
 </html>
