@@ -5,4 +5,26 @@
 body {
   background-color: map-get($colours, primary);
   color: map-get($colours, text);
+  font-family: "Inter", sans-serif;
+}
+
+.btn {
+  background-color: map-get($colours, icon);
+  border-color: map-get($colours, icon);
+  color: map-get($colours, primary);
+
+  &:hover {
+    background-color: map-get($colours, primary);
+    border-color: map-get($colours, icon);
+    color: map-get($colours, icon);
+  }
+}
+
+.login {
+  border-color: map-get($colours, icon);
+}
+
+#toggleAuthMode {
+  font-size: smaller;
+  color: map-get($colours, text);
 }

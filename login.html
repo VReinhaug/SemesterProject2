@@ -9,6 +9,12 @@
       name="description"
       content="Login or create new user to be able to create your own listings or bid on products"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="dist/css/index.css" />
     <script
       src="https://kit.fontawesome.com/84a2433f18.js"
@@ -55,30 +61,49 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="container">
       <div id="login-message" class="mb-3"></div>
-      <div class="row col-10 col-md-5 m-auto card p-3">
+      <div class="row col-10 col-md-5 m-auto card p-3 login">
         <form name="auth">
-          <h2 id="authTitle" class="text-center">Login</h2>
+          <h2 id="authTitle">Login</h2>
           <div id="nameField" style="display: none" class="mb-3">
-            <input type="text" name="name" placeholder="Name" />
-          </div>
-          <div class="mb-3">
-            <input type="email" name="email" placeholder="Email" required />
-          </div>
-          <div class="mb-3">
+            <label for="nameField" class="form-label">Your name</label>
             <input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="text"
+              name="name"
+              id="nameField"
+              class="form-control"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="emailField" class="form-label">Your email</label>
+            <input
+              type="email"
+              name="email"
+              id="emailField"
+              class="form-control"
               required
             />
           </div>
-          <button type="submit" data-auth="login" class="btn btn-primary">
-            Log in
-          </button>
+          <div class="mb-3">
+            <label for="passwordField" class="form-label">Your password</label>
+            <input
+              type="password"
+              name="password"
+              id="passwordField"
+              class="form-control"
+              required
+            />
+          </div>
+          <a href="#" id="toggleAuthMode"
+            >Don't have an account? Register here</a
+          >
+          <div class="text-center">
+            <button type="submit" data-auth="login" class="btn btn-primary m-3">
+              Log in
+            </button>
+          </div>
         </form>
-        <a href="#" id="toggleAuthMode">Don't have an account? Register here</a>
       </div>
     </main>
     <script type="module" src="js/main.mjs"></script>
