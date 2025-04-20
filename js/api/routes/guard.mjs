@@ -2,14 +2,17 @@ import { load } from "../../storage/load.mjs";
 
 export function protectPage() {
   const token = load("token");
-
-  const publicPages = ["/index.html", "/login.html"];
   const currentPath = window.location.pathname;
 
-  if (!token && !publicPages.includes(currentPath)) {
+  // Public pages that don't need auth
+  const publicPages = ["/", "/index.html", "/login.html"];
+
+  const isPublic = publicPages.includes(currentPath);
+
+  if (!token && !isPublic) {
     localStorage.setItem(
       "authRedirectMessage",
-      "Please log in or register user to access the full page",
+      "Please log in or register to access the full site.",
     );
     window.location.href = "/login.html";
   }
