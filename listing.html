@@ -46,7 +46,43 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main class="container justify-content-center">
+      <h1 id="listing-title"></h1>
+      <div class="row">
+        <div class="col-md-6">
+          <div
+            id="media-carousel"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner" id="carousel-images"></div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#media-carousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#media-carousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p id="listing-description"></p>
+          <h3>Bids</h3>
+          <ul id="bids-list" class="list-group mb-3"></ul>
+          <button id="make-bid-btn" class="btn btn-primary">Make bid</button>
+        </div>
+      </div>
+    </main>
     <script type="module" src="../js/main.mjs"></script>
+    <script type="module" src="/js/listing.mjs"></script>
   </body>
 </html>
