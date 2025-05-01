@@ -44,4 +44,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         alert("Error updating avatar: " + error.message);
       }
     });
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const user = load("profile");
+    const updated = await getProfile(user.name);
+    save("profile", updated);
+    renderProfile(updated, listings, bids);
+  });
 });

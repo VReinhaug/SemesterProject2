@@ -1,7 +1,6 @@
 export function renderProfile(profile, listings, bids) {
   document.getElementById("profile-name").textContent = profile.name;
-  document.getElementById("profile-credits").textContent =
-    profile.credits || "1,000";
+  document.getElementById("profile-credits").textContent = profile.credits;
   document.getElementById("avatar").src =
     profile.avatar?.url || "/img/default-avatar.png";
 
@@ -38,8 +37,8 @@ export function renderProfile(profile, listings, bids) {
       const item = document.createElement("li");
       item.classList.add("list-group-item");
       item.innerHTML = `
-        <a href="/listing-detail.html?id=${bid.id}">
-          ${bid.listing?.title || "Listing"} – ${bid.amount} credits
+        <a href="/listing.html?id=${bid.listing.id}">
+          ${bid.listing?.title || "Listing"} – $ ${bid.amount}
         </a>
       `;
       bidsContainer.appendChild(item);

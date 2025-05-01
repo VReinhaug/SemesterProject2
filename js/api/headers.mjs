@@ -6,12 +6,10 @@ export function headers(hasBody = false) {
 
   const token = load("token");
 
-  //If there is a token, add the token
   if (token) {
     headers.append("Authorization", `Bearer ${token}`);
   }
 
-  //If there is an API Key, add the API Key
   if (API_KEY) {
     headers.append("X-Noroff-API-Key", API_KEY);
   }

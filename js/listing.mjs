@@ -1,9 +1,14 @@
 import { API_BASE_URL, API_SINGLE_LISTING } from "./api/constants.mjs";
+import { renderBids } from "./ui/listings/renderBids.mjs";
+import { submitBid } from "./ui/listings/submitBid.mjs";
+import { renderCarousel } from "./ui/listings/renderCarousel.mjs";
+import { load } from "./storage/load.mjs";
+import { save } from "./storage/save.mjs";
+import { getProfile } from "./api/profile/getProfile.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
-
   if (!id) return;
 
   try {
@@ -22,45 +27,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("listing-description").textContent =
       data.description;
 
-    // Carousel
-    const carouselInner = document.getElementById("carousel-images");
-    data.media.forEach((media, index) => {
+    if (data.media.length > 1) {
+      renderCarousel(data.media);
+    } else if (data.media.length === 1) {
+      const carouselInner = document.getElementById("carousel-images");
       const item = document.createElement("div");
-      item.className = `carousel-item ${index === 0 ? "active" : ""}`;
-      item.innerHTML = `<img src="${media.url}" class="d-block w-100" alt="${media.alt}" />`;
+      item.className = "carousel-item active";
+      item.innerHTML = `<img src="${data.media[0].url}" class="d-block w-100" alt="${data.media[0].alt}" />`;
       carouselInner.appendChild(item);
-      console.log(media);
-    });
-
-    // Bids
-    const bidsList = document.getElementById("bids-list");
-    bidsList.innerHTML = "";
-
-    if (data.bids?.length > 0) {
-      const sortedBids = data.bids.sort((a, b) => b.amount - a.amount);
-
-      sortedBids.forEach((bid, index) => {
-        const li = document.createElement("li");
-        li.className =
-          "list-group-item d-flex justify-content-between align-items-center";
-
-        const time = new Date(bid.created).toLocaleString();
-        const isTop = index === 0;
-
-        li.innerHTML = `
-          <div>
-            <strong>${bid.bidder.name}</strong> • <small class="text-muted">${time}</small>
-          </div>
-          <div>
-            <span class="${isTop ? "fw-bold number winner" : "number"}">$ ${bid.amount}</span>
-          </div>
-        `;
-
-        bidsList.appendChild(li);
-      });
-    } else {
-      bidsList.innerHTML = `<li class="list-group-item text-muted">No bids yet</li>`;
     }
+
+    // Get credit value
+    const local = load("profile");
+    if (local?.name) {
+      const fresh = await getProfile(local.name);
+      save("profile", fresh);
+    }
+
+    renderBids(data.bids || []);
+    submitBid(data);
   } catch (error) {
     console.error("Error loading listing:", error);
   }

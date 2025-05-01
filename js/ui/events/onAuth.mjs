@@ -1,5 +1,6 @@
 import { login } from "../../api/auth/login.mjs";
 import { registerUser } from "../../api/auth/register.mjs";
+import { save } from "../../storage/save.mjs";
 
 export async function onAuth(event) {
   event.preventDefault();
@@ -15,13 +16,16 @@ export async function onAuth(event) {
   }
 
   try {
-    const mode = event.submitter?.dataset.auth || "login";
-    if (mode === "login") {
-      await login(email, password);
+    let userProfile;
+
+    if (event.submitter.dataset.auth === "login") {
+      userProfile = await login(email, password);
     } else {
       await registerUser(name, email, password);
-      await login(email, password);
+      userProfile = await login(email, password);
     }
+
+    save("profile", userProfile);
 
     window.location.href = "/index.html";
   } catch (error) {
