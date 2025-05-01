@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <div class="card-body d-flex justify-content-between">
               <h5 class="card-title mb-0">${listing.title}</h5>
-              <p class="mb-0"><strong>$${topBid}</strong></p>
+              <p class="mb-0 number"><strong>$${topBid}</strong></p>
             </div>
           </div>
         </a>

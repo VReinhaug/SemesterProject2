@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       item.className = `carousel-item ${index === 0 ? "active" : ""}`;
       item.innerHTML = `<img src="${media.url}" class="d-block w-100" alt="${media.alt}" />`;
       carouselInner.appendChild(item);
+      console.log(media);
     });
 
     // Bids
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <strong>${bid.bidder.name}</strong> • <small class="text-muted">${time}</small>
           </div>
           <div>
-            <span class="${isTop ? "fw-bold text-success" : ""}">${bid.amount} credits</span>
+            <span class="${isTop ? "fw-bold number winner" : "number"}">$ ${bid.amount}</span>
           </div>
         `;
 

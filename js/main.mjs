@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       logoutLink.addEventListener("click", (e) => {
         e.preventDefault();
-        logoutUser(); // ✅ Use the modular logout
+        logoutUser();
       });
     }
   } else {

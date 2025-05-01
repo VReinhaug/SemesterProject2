@@ -5,7 +5,7 @@ export function showLoginRedirectMessage() {
 
     if (container) {
       container.textContent = message;
-      container.classList.add("alert", "alert-warning");
+      container.classList.add("alert");
       localStorage.removeItem("authRedirectMessage");
     }
   }

@@ -8,6 +8,26 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+h1,
+h2,
+h3,
+.btn {
+  font-family: "Poppins", sans-serif;
+}
+
+.number {
+  font-family: "Space Mono", monospace;
+}
+
+.winner {
+  color: map-get($colours, secondary);
+}
+
+.alert {
+  color: map-get($colours, third);
+  text-align: center;
+}
+
 .btn {
   background-color: map-get($colours, icon);
   border-color: map-get($colours, icon);
