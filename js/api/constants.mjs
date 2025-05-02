@@ -7,6 +7,8 @@ export const API_LOGIN = "/login";
 
 export const API_PROFILE = "/auction/profiles";
 export const API_SINGLE_PROFILE = (name) => `/auction/profiles/${name}`;
+export const API_PROFILE_BIDS = (name) =>
+  `/auction/profiles/${name}/bids?_listings=true`;
 
 export const API_LISTINGS = "/auction/listings";
 export const API_ACTIVE_LISTINGS = "/auction/listings?_active=true";

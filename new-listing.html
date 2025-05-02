@@ -50,7 +50,39 @@
         </div>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <form id="listing-form">
+        <div class="mb-3">
+          <label for="title" class="form-label">What are you selling?</label>
+          <input type="text" class="form-control" id="title" required />
+        </div>
+        <div class="mb-3">
+          <label for="media" class="form-label">Add an image URL</label>
+          <input type="url" class="form-control" id="media" />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label"
+            >Describe your product</label
+          >
+          <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="endsAt" class="form-label"
+            >End date for your auction</label
+          >
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="endsAt"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-button">
+          Sell it!
+        </button>
+      </form>
+    </main>
     <script type="module" src="js/main.mjs"></script>
+    <script type="module" src="js/listingForm.mjs"></script>
   </body>
 </html>

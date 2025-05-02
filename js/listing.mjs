@@ -5,6 +5,7 @@ import { renderCarousel } from "./ui/listings/renderCarousel.mjs";
 import { load } from "./storage/load.mjs";
 import { save } from "./storage/save.mjs";
 import { getProfile } from "./api/profile/getProfile.mjs";
+import { renderOwnerControls } from "./ui/listings/renderOwnerControl.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(
-      `${API_BASE_URL}${API_SINGLE_LISTING(id)}?_bids=true`,
+      `${API_BASE_URL}${API_SINGLE_LISTING(id)}?_bids=true&_seller=true`,
     );
     const { data } = await res.json();
 
@@ -37,7 +38,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       carouselInner.appendChild(item);
     }
 
-    // Get credit value
     const local = load("profile");
     if (local?.name) {
       const fresh = await getProfile(local.name);
@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     renderBids(data.bids || []);
     submitBid(data);
+    renderOwnerControls(data);
   } catch (error) {
     console.error("Error loading listing:", error);
   }

@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     data.forEach((listing) => {
       const col = document.createElement("div");
       col.className = "col-6 col-md-4 mb-4";
+      console.log(listing);
 
       const topBid = listing.bids?.length
         ? Math.max(...listing.bids.map((b) => b.amount))
