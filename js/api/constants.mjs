@@ -11,6 +11,8 @@ export const API_PROFILE_BIDS = (name) =>
   `/auction/profiles/${name}/bids?_listings=true`;
 
 export const API_LISTINGS = "/auction/listings";
-export const API_ACTIVE_LISTINGS = "/auction/listings?_active=true";
+export const API_ACTIVE_LISTINGS =
+  "/auction/listings?_active=true&_bids=true&_seller=true";
 export const API_SINGLE_LISTING = (id) => `/auction/listings/${id}`;
 export const API_BID_ON_LISTING = (id) => `/auction/listings/${id}/bids`;
+export const LISTINGS_PER_PAGE = 24;

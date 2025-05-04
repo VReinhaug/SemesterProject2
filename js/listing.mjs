@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     const { data } = await res.json();
 
+    console.log(data);
+
     document.getElementById("listing-title").textContent = data.title;
     const endDate = new Date(data.endsAt).toLocaleString();
     const endTag = document.createElement("p");

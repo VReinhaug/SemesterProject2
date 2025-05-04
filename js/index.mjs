@@ -1,16 +1,22 @@
-import { API_BASE_URL, API_ACTIVE_LISTINGS } from "./api/constants.mjs";
+import { getListingsPage } from "./ui/listings/getPagesForListings.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("listing-teasers");
+  const pagination = document.getElementById("pagination");
 
-  try {
-    const res = await fetch(`${API_BASE_URL}${API_ACTIVE_LISTINGS}&_bids=true`);
-    const { data } = await res.json();
+  const params = new URLSearchParams(window.location.search);
+  let currentPage = parseInt(params.get("page")) || 1;
+
+  async function loadPage(page) {
+    container.innerHTML = "";
+    pagination.innerHTML = "";
+
+    const { data, meta } = await getListingsPage(page);
+    console.log(`📦 Page ${page} loaded with ${data.length} listings`);
 
     data.forEach((listing) => {
       const col = document.createElement("div");
       col.className = "col-6 col-md-4 mb-4";
-      console.log(listing);
 
       const topBid = listing.bids?.length
         ? Math.max(...listing.bids.map((b) => b.amount))
@@ -34,7 +40,31 @@ document.addEventListener("DOMContentLoaded", async () => {
       `;
       container.appendChild(col);
     });
-  } catch (error) {
-    console.error("Failed to fetch listings:", error);
+
+    if (!meta.isFirstPage) {
+      const prev = document.createElement("button");
+      prev.textContent = "Previous";
+      prev.className = "btn btn-outline-primary me-2";
+      prev.onclick = () => {
+        const newPage = meta.previousPage;
+        window.history.pushState({}, "", `?page=${newPage}`);
+        loadPage(newPage);
+      };
+      pagination.appendChild(prev);
+    }
+
+    if (!meta.isLastPage) {
+      const next = document.createElement("button");
+      next.textContent = "Next";
+      next.className = "btn btn-outline-primary";
+      next.onclick = () => {
+        const newPage = meta.nextPage;
+        window.history.pushState({}, "", `?page=${newPage}`);
+        loadPage(newPage);
+      };
+      pagination.appendChild(next);
+    }
   }
+
+  loadPage(currentPage);
 });
