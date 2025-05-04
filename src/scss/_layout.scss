@@ -1,0 +1,31 @@
+main {
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+i {
+  color: map-get($colours, icon);
+  margin-bottom: 15px;
+}
+
+.navbar {
+  border-bottom: 1px solid map-get($colours, icon);
+  font-weight: 700;
+
+  .nav-icons {
+    .nav-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &:hover {
+        color: map-get($colours, icon);
+      }
+    }
+  }
+}

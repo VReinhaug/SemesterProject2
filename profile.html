@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your profile | GoodBid</title>
+    <meta
+      name="description"
+      content="View your active listings and bids, and change your profile."
+    />
+    <link rel="stylesheet" href="dist/css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/84a2433f18.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar d-flex justify-content-between align-items-center p-4 mb-4"
+      >
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="/img/GB-logo_180x180.png"
+            alt="logo"
+            width="40"
+            height="40"
+          />
+        </a>
+        <div class="nav-icons d-flex gap-4">
+          <a
+            href="/new-listing.html"
+            class="nav-icon text-center text-decoration-none"
+          >
+            <i class="fa-solid fa-square-plus fa-xl"></i>
+            <p class="mb-0">New Listing</p>
+          </a>
+          <a href="#" class="nav-icon logout text-center text-decoration-none">
+            <i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+            <p class="mb-0">Logout</p>
+          </a>
+          <a href="#" class="nav-icon profile text-center text-decoration-none">
+            <i class="fa-solid fa-circle-user fa-xl"></i>
+            <p class="mb-0">Profile</p>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="container d-flex justify-content-center py-4">
+      <div>
+        <section class="row align-items-center mb-4">
+          <div class="col-4 col-md-3 text-center">
+            <img
+              id="avatar"
+              class="rounded-circle img-fluid mb-2"
+              src=""
+              alt="Profile image"
+              style="max-height: 300px"
+            />
+            <p
+              id="edit-avatar-btn"
+              class="text-primary mb-0"
+              style="cursor: pointer"
+            >
+              <i class="fa-solid fa-pen"></i> Edit
+            </p>
+            <div id="avatar-input-container" class="mt-2 d-none">
+              <input
+                type="url"
+                id="avatar-url"
+                class="form-control form-control-sm"
+                placeholder="Paste new image URL"
+              />
+              <button id="save-avatar-btn" class="btn btn-sm btn-success mt-1">
+                Save
+              </button>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="d-flex flex-column align-items-start">
+              <h2 id="profile-name" class="mb-1"></h2>
+              <p class="mb-0">
+                <strong>Credits:</strong> <span id="profile-credits"></span>
+              </p>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section class="mt-4">
+          <h2>Your Listings</h2>
+          <div id="user-listings" class="row"></div>
+          <div id="no-listings" class="text-muted d-none mt-2">
+            You currently have no listings.
+            <a href="/new-listing.html" class="btn btn-primary btn-sm ms-2"
+              >Create one</a
+            >
+          </div>
+        </section>
+        <hr />
+        <section class="mt-4">
+          <h2>Your Bids</h2>
+          <ul id="user-bids" class="list-group"></ul>
+          <div id="no-bids" class="text-muted d-none mt-2">
+            You currently have no active bids.
+            <a href="/index.html" class="btn btn-outline-primary btn-sm ms-2"
+              >Make one!</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="../js/main.mjs"></script>
+    <script type="module" src="/js/profile.mjs"></script>
+  </body>
+</html>
