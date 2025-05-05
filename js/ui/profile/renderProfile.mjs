@@ -13,14 +13,15 @@ export function renderProfile(profile, listings, bids) {
     listings.forEach((listing) => {
       const card = document.createElement("div");
       card.classList.add("col-md-4", "mb-3");
-      card.innerHTML = `
-          <div class="card">
+      card.innerHTML = `<a href="/listing.html?id=${listing.id}" class="text-decoration-none">
+          <div class="card h-100 position-relative">
             <img src="${listing.media[0]?.url || "/img/placeholder.jpg"}" class="card-img-top" alt="${listing.title}" />
             <div class="card-body">
               <h5 class="card-title">${listing.title}</h5>
               <p class="card-text">${listing.description || ""}</p>
             </div>
           </div>
+          </a>
         `;
       listingsContainer.appendChild(card);
     });
