@@ -1,5 +1,4 @@
 main {
-  max-width: 900px;
   margin-bottom: 30px;
 }
 
@@ -13,10 +12,12 @@ i {
   margin-bottom: 15px;
 }
 
-.navbar {
+header {
   border-bottom: 1px solid map-get($colours, icon);
   font-weight: 700;
+}
 
+.navbar {
   .nav-icons {
     .nav-icon {
       display: flex;
@@ -27,5 +28,12 @@ i {
         color: map-get($colours, icon);
       }
     }
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-max-width {
+    max-width: 60%;
+    margin-inline: auto;
   }
 }
