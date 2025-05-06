@@ -12,7 +12,7 @@ export function renderProfile(profile, listings, bids) {
   } else {
     listings.forEach((listing) => {
       const card = document.createElement("div");
-      card.classList.add("col-md-4", "mb-3");
+      card.classList.add("col-6", "col-md-4", "mb-4");
       card.innerHTML = `<a href="/listing.html?id=${listing.id}" class="text-decoration-none">
           <div class="card h-100 position-relative">
             <img src="${listing.media[0]?.url || "/img/placeholder.jpg"}" class="card-img-top" alt="${listing.title}" />
