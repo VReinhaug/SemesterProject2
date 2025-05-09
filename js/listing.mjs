@@ -1,7 +1,6 @@
 import { API_BASE_URL, API_SINGLE_LISTING } from "./api/constants.mjs";
 import { renderBids } from "./ui/listings/renderBids.mjs";
 import { submitBid } from "./ui/listings/submitBid.mjs";
-import { renderCarousel } from "./ui/listings/renderCarousel.mjs";
 import { load } from "./storage/load.mjs";
 import { save } from "./storage/save.mjs";
 import { getProfile } from "./api/profile/getProfile.mjs";
@@ -20,6 +19,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log(data);
 
+    // Set <title>
+    document.title = `${data.title} | GoodBid`;
+
+    // Set <meta name="description">
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.name = "description";
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = `Bid on ${data.title}`;
+
     document.getElementById("listing-title").textContent = data.title;
     const endDate = new Date(data.endsAt).toLocaleString();
     const endTag = document.createElement("p");
@@ -30,14 +41,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("listing-description").textContent =
       data.description;
 
-    if (data.media.length > 1) {
-      renderCarousel(data.media);
-    } else if (data.media.length === 1) {
-      const carouselInner = document.getElementById("carousel-images");
-      const item = document.createElement("div");
-      item.className = "carousel-item active";
-      item.innerHTML = `<img src="${data.media[0].url}" class="d-block w-100" alt="${data.media[0].alt}" />`;
-      carouselInner.appendChild(item);
+    if (data.media.length) {
+      const mediaContainer = document.getElementById("media-container");
+      const img = document.createElement("img");
+      img.src = data.media[0].url;
+      img.alt = data.media[0].alt || data.title;
+      img.className = "img-fluid rounded"; // Bootstrap-friendly
+
+      mediaContainer.appendChild(img);
     }
 
     const local = load("profile");
