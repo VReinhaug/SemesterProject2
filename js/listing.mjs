@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     const { data } = await res.json();
 
-    console.log(data);
-
     // Set <title>
     document.title = `${data.title} | GoodBid`;
 
