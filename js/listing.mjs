@@ -17,10 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     const { data } = await res.json();
 
-    // Set <title>
     document.title = `${data.title} | GoodBid`;
 
-    // Set <meta name="description">
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement("meta");
@@ -44,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const img = document.createElement("img");
       img.src = data.media[0].url;
       img.alt = data.media[0].alt || data.title;
-      img.className = "img-fluid rounded"; // Bootstrap-friendly
+      img.className = "img-fluid rounded";
 
       mediaContainer.appendChild(img);
     }
