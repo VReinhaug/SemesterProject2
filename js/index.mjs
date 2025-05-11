@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     pagination.innerHTML = "";
 
     const { data, meta } = await getListingsPage(page);
-    console.log(`📦 Page ${page} loaded with ${data.length} listings`);
 
     data.forEach((listing) => {
       const col = document.createElement("div");
